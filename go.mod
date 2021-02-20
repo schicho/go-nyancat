@@ -1,3 +1,3 @@
 module github.com/schicho/ricardo-milos-dancing
 
-go 1.15
+go 1.16
