@@ -1,10 +1,16 @@
 from PIL import Image
-import math
 
+# Converts images/bitmaps directly to ascii-art.
+# Colors need to be predefined and the output does need some further
+# formatting before it can replace the frames in the .json file.
+
+# manually change your frame here.
 img = Image.open("exp1.bmp")
 
+# images need to have a resolution of w: 65, h: 63
 width = 65
 
+# all colors in your frames need to be predefined here. (R,G,B)
 colordict = {
     (0,0,0): "@",
     (255,49,24) : "#",
@@ -13,15 +19,8 @@ colordict = {
     (255,255,255) : ".",
     (0, 132, 198) : "+"
 }
-    
 
-# img = img.convert('L')
 pixels = img.getdata()
-
-#print(pixels[0])
-
-#for pixel in pixels:
-#    print(sum(list(pixel)))
 
 new_pixels = [colordict[pixel] for pixel in pixels]
 new_pixels = ''.join(new_pixels)
@@ -33,5 +32,4 @@ final_image = "\",\n\"".join(final_image)
 
 with open("ascii.txt", "w") as f:
     f.write(final_image)
-
 
