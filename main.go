@@ -48,7 +48,7 @@ func main() {
 	var hideTime bool
 
 	// Parse options
-	flag.BoolVar(&hideTime, "n", false, "Don't show the time nyaned")
+	flag.BoolVar(&hideTime, "n", false, "Don't show the time you got that.")
 	flag.Parse()
 
 	// Set output character
