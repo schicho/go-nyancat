@@ -5,8 +5,8 @@
 ## Installation
 
 ```sh
-git clone https://github.com/schicho/go-nyancat.git
-cd go-nyancat && go build
+git clone https://github.com/schicho/ricardo-milos-dancing.git
+cd ricardo-milos-dancing && go build
 ```
 
 ## Usage
@@ -14,13 +14,13 @@ cd go-nyancat && go build
 Run:
 
 ```sh
-./go-nyancat
+./ricardo-milos-dancing
 ```
 
 Options:
 
 ```
-  -n    Don't show the time nyaned
+  -n    Don't show the time you got that.
 ```
 
 ## Resources
