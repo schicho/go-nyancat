@@ -1,17 +1,13 @@
-# Go port of Nyancat CLI
+# Ricardo Milos Dancing on the Terminal
 
 ![nyancat](http://i.imgur.com/4YSU5J6.gif)
 
 ## Installation
 
 ```sh
-git clone https://github.com/NARKOZ/go-nyancat.git
+git clone https://github.com/schicho/go-nyancat.git
 cd go-nyancat && go build
 ```
-
-Install [mpg123](http://www.mpg123.de/) for audio support.
-
-On Mac OS X using Homebrew: `brew install mpg123`
 
 ## Usage
 
@@ -24,16 +20,16 @@ Run:
 Options:
 
 ```
-  -m    Don't play audio
   -n    Don't show the time nyaned
 ```
 
 ## Resources
 
+- [Original YouTube video with the sprites by Doktor E](https://youtu.be/swwbsbRBeMg)
+- [Original Go Implementation](https://github.com/NARKOZ/go-nyancat)
 - [Nyancat CLI](https://github.com/klange/nyancat)
-- [Ruby port of Nyancat CLI](https://github.com/andatche/ruby_nyancat)
-- [NyanCat Song](http://momolabo.lolipop.jp/nyancatsong/Nyan/Nyanyanyanyanyanyanya%21.html)
 
 ## License
 
 Released under the BSD 2-clause license. See LICENSE.txt for details.
+
