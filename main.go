@@ -1,6 +1,7 @@
 package main
 
 import (
+	_ "embed"
 	"encoding/json"
 	"flag"
 	"fmt"
@@ -10,7 +11,6 @@ import (
 	"strconv"
 	"strings"
 	"time"
-	_ "embed"
 )
 
 //go:embed assets/frames.json
@@ -102,24 +102,22 @@ func main() {
 
 	// Capture SIGINT
 	captureSigint()
-	
+
 	frameFeed := make(chan []string, 50)
-	
+
 	go func() {
 		frameFeeder := func(sleep time.Duration) {
 			for {
 				for _, frame := range frames {
-				frameFeed <- frame
-				time.Sleep(sleep * time.Microsecond)
-				frameFeed <- frame
+					frameFeed <- frame
+					time.Sleep(sleep * time.Microsecond)
+					frameFeed <- frame
 				}
 			}
 		}
 		go frameFeeder(70)
 		go frameFeeder(30)
 	}()
-				
-	
 
 	for {
 		for frame := range frameFeed {
