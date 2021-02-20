@@ -43,7 +43,7 @@ func playAudio() {
 }
 
 func printTime(startTime time.Time, animWidth int) {
-	message := fmt.Sprintf("You have nyaned for %.f seconds!", time.Since(startTime).Seconds())
+	message := fmt.Sprintf("You got that for %.f seconds!", time.Since(startTime).Seconds())
 	padding := (animWidth - (len(message) + 4)) / 2
 
 	fmt.Print(strings.Repeat(" ", padding))
@@ -64,20 +64,12 @@ func main() {
 
 	// Set colors
 	colors := map[string]string{
-		"+": "226",
-		"@": "223",
-		",": "17",
-		"-": "205",
-		"#": "82",
-		".": "15",
-		"$": "219",
-		"%": "217",
-		";": "99",
-		"&": "214",
-		"=": "39",
-		"'": "0",
-		">": "196",
-		"*": "245",
+		"+": "26",
+		"@": "0",
+		"#": "9",
+		".": "255",
+		"%": "130",
+		">": "173",
 	}
 
 	// Import frames from data file
@@ -125,9 +117,27 @@ func main() {
 		// Play music
 		playAudio()
 	}
+	
+	frameFeed := make(chan []string, 50)
+	
+	go func() {
+		frameFeeder := func(sleep time.Duration) {
+			for {
+				for _, frame := range frames {
+				frameFeed <- frame
+				time.Sleep(sleep * time.Microsecond)
+				frameFeed <- frame
+				}
+			}
+		}
+		go frameFeeder(70)
+		go frameFeeder(30)
+	}()
+				
+	
 
 	for {
-		for _, frame := range frames {
+		for frame := range frameFeed {
 			// Print the next frame
 			for _, line := range frame[minRow:maxRow] {
 				for _, char := range line[minCol:maxCol] {
@@ -143,7 +153,7 @@ func main() {
 
 			// Reset the frame and sleep
 			fmt.Print("\033[H")
-			time.Sleep(90 * time.Millisecond)
+			time.Sleep(170 * time.Millisecond)
 		}
 	}
 }
