@@ -1,6 +1,6 @@
 # Ricardo Milos Dancing on the Terminal
 
-![nyancat](http://i.imgur.com/4YSU5J6.gif)
+![ricardo](https://i.imgur.com/cbIKcsE.gif)
 
 ## Installation
 
