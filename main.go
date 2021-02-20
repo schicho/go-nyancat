@@ -4,15 +4,17 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"os/signal"
-	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
+	_ "embed"
 )
+
+//go:embed assets/frames.json
+var data []byte
 
 func captureSigint() {
 	c := make(chan os.Signal, 1)
@@ -63,10 +65,6 @@ func main() {
 		"%": "130",
 		">": "173",
 	}
-
-	// Import frames from data file
-	framesFile, _ := filepath.Abs("assets/frames.json")
-	data, _ := ioutil.ReadFile(framesFile)
 
 	var frames [][]string
 	json.Unmarshal(data, &frames)
