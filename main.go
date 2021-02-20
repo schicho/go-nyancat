@@ -36,12 +36,6 @@ func termSize() (int, int) {
 	return termWidth, termHeight
 }
 
-func playAudio() {
-	audio, _ := filepath.Abs("assets/audio.mp3")
-	cmd := exec.Command("mpg123", "-loop 0", "-q", audio)
-	cmd.Start()
-}
-
 func printTime(startTime time.Time, animWidth int) {
 	message := fmt.Sprintf("You got that for %.f seconds!", time.Since(startTime).Seconds())
 	padding := (animWidth - (len(message) + 4)) / 2
@@ -51,11 +45,9 @@ func printTime(startTime time.Time, animWidth int) {
 }
 
 func main() {
-	var mute bool
 	var hideTime bool
 
 	// Parse options
-	flag.BoolVar(&mute, "m", false, "Don't play audio")
 	flag.BoolVar(&hideTime, "n", false, "Don't show the time nyaned")
 	flag.Parse()
 
@@ -112,11 +104,6 @@ func main() {
 
 	// Capture SIGINT
 	captureSigint()
-
-	if !mute {
-		// Play music
-		playAudio()
-	}
 	
 	frameFeed := make(chan []string, 50)
 	
